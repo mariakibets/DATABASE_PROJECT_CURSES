@@ -1,19 +1,29 @@
-CREATE TABLE test();
-
-DROP TABLE test;
-DROP TABLE test2;
-
-CREATE TABLE users (
-    first_name varchar(64) NOT NULL CONSTRAINT first_name_not_empty CHECK (first_name != ''),
-    last_name varchar(64) NOT NULL  CONSTRAINT last_name_not_emrty (last_name != ''),
-    email text NOT NULL CHECK (email != '') UNIQUE,
-    biography text,
-    gender varchar(30) NOT NULL,
-    is_subscribe boolean NOT NULL,
-    birthday date CHECK ( birthday <= current_date),
-    foot_size smallint,
-    height numeric(4 , 2)
+CREATE TABLE books (
+    id serial PRIMARY KEY,
+    author varchar (70) CHECK (author != ''),
+    book_name varchar(70) CHECK (book_name != '' ) UNIQUE,
+    year_relesed varchar(4),
+    paint varchar (70),
+    discription text,
+    quantity int CHECK (quantity >= 0),
+    PRIMARY KEY (author, book_name )
 );
 
-INSERT INTO users VALUES 
-               ('Maria', 'Kibets', 'biograpy.....', 'female', true, '2006-02-03', 38, 1.65)
+CREATE TABLE products (
+    id serial PRIMARY KEY,
+    brand varchar (200) NOT NULL,
+    model varchar (300) NOT NULL,
+    description text,
+    price numeric (10, 2) NOT NULL CHECK (price > 0),
+    dicount_price numeric (10, 2) CHECK (dicount_price < price)
+);
+
+INSERT INTO products (brand, model, price ) VALUES
+('Tovar 1', 'Model 1', 200),
+('Tovar 2', 'Model 2', 400),
+('Tovar 3', 'Model 3', 600),
+('Tovar 4', 'Model 4', 800);
+
+ALTER TABLE products ADD CONSTRAINT "unique_brand_model_pair" UNIQUE (brand , model);
+
+ALTER TABLE products ADD COLUMN quantity int;
