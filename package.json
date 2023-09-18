@@ -1,0 +1,23 @@
+{
+  "name": "database_project_curses",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariakibets/DATABASE_PROJECT_CURSES.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariakibets/DATABASE_PROJECT_CURSES/issues"
+  },
+  "homepage": "https://github.com/mariakibets/DATABASE_PROJECT_CURSES#readme",
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}
