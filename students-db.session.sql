@@ -1,18 +1,17 @@
-CREATE TABLE content (
+CREATE TABLE citizens(
     id serial PRIMARY KEY,
-    name varchar (256) CHECK (name != '') NOT NULL,
-    discription text,
-    author_id int REFERENCES users(id),
-    created_at timestamp DEFAULT current_timestamp
-);
+    name varchar (256),
+    age int,
+    is_adult boolean GENERATED ALWAYS AS (age >= 18) STORED
+     );
+     
+     INSERT INTO citizens ( name, age)
+     VALUES (
+       'Ivanov Ivan', 45  
+       );
 
-INSERT INTO content (name, discription, author_id ) VALUES
-('FUNNY DOG', NULL, 1);
-
-
-CREATE TABLE reactions (
-    content_id int REFERENCES content(id),
-    user_id int REFERENCES users(id),
-    is_liked boolean
-);
-
+       INSERT INTO citizens (name, age) VALUES (
+        'Petrov Petr', 17
+       );
+    UPDATE citizens SET age = 18 WHERE id = 2 RETURNING *;
+   
