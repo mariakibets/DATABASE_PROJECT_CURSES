@@ -1,14 +1,18 @@
-CREATE TABLE orders_to_products (
-    orsder_id int REFERENCES orders(id),
-    product_id int REFERENCES products (id),
-    quantity int,
-    PRIMARY KEY (orsder_id, product_id)
+CREATE TABLE content (
+    id serial PRIMARY KEY,
+    name varchar (256) CHECK (name != '') NOT NULL,
+    discription text,
+    author_id int REFERENCES users(id),
+    created_at timestamp DEFAULT current_timestamp
 );
 
+INSERT INTO content (name, discription, author_id ) VALUES
+('FUNNY DOG', NULL, 1);
 
-INSERT INTO  orders (customer_id) VALUES (1);
 
-INSERT INTO orders_to_products (orsder_id, product_id, quantity) VALUES 
-(1, 4, 2),
-(1, 2, 1),
-(1, 1, 1);
+CREATE TABLE reactions (
+    content_id int REFERENCES content(id),
+    user_id int REFERENCES users(id),
+    is_liked boolean
+);
+
