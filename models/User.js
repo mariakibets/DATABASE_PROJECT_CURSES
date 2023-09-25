@@ -1,13 +1,13 @@
 const {mapUsers} = require('../utils');
 
 
-class Users {
+class User {
     static _client;
     static _tableName;
 
     static async findAll() {
         await this._client.query(`
-        SELECT *FROM ${this._tableName}
+        SELECT *FROM ${this._tableName} 
         
         `)
     }
@@ -24,4 +24,4 @@ class Users {
 }
 
 
-module.exports = Users;
+module.exports = User;

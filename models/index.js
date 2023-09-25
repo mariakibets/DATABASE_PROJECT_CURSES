@@ -1,7 +1,7 @@
 // з індексу моделей ми віддвємо вже налаштовані і готові до роботи моделі
 const {Client}= require('pg');
 const {configs} = require('../configs');
-const User = require ('./Users');
+const User = require ('./User');
 const Product = require ('./Product');
 
 
